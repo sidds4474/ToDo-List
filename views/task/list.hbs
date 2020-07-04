@@ -1,0 +1,54 @@
+{{!-- Todo list page --}}
+
+<h1 style="margin-top: 10px;margin-bottom: 10px;margin-left: 210px;"> To Do List</h1>
+
+{{!-- Todo Table  --}}
+
+<table class="table table-bordered table-dark">
+    <thead style="background-color: rgba(255,255,255,0.3);">
+        <tr>
+            <th>To Do Name</th>
+            <th>To Do Description</th>
+            <th>To Do Category</th>
+            <th>To Do Due Date</th>
+            <th>Completed</th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr class="info">
+          <td><button
+                    style="background-color: cornsilk;border-radius:10%;">{{this.taskName}}</button>
+            </td>
+           <td><button
+                    style="background-color: violet;border-radius:5%;">{{this.taskDescription}}</button>
+            </td>
+            <td><button
+                    style="background-color: #ffeb3b;border-radius:10%;">{{this.taskCategory}}</button>
+            </td>
+            <td><button
+                    style="background-color:#ffb2b2;border-radius: 5%;">{{this.dueDate}}</button>
+            </td>
+           
+           <td>
+                <a href="/task/delete/{{this._id}}"
+                    onclick="return confirm('Are you sure you have completed this todo ?');"><i class="fa fa-check-square fa-lg"
+                        aria-hidden="true"></i></a>
+           </td>
+            <td>
+                <a href="/task/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <br><br>
+               
+            </td>
+            
+        </tr>
+        {{/each}}
+    </tbody>
+    
+        {{!-- Create a new ToDo Button --}}
+
+    <a style="position: absolute;top: 40px;right: 25px;" class="btn btn-dark" href="/task"><i class="fa fa-plus"></i>
+        Create a New To Do</a>
+</table>
